@@ -1,0 +1,170 @@
+<div class="h-[72px] border-b border-erp-gray-100 flex flex-row justify-between items-center px-8">
+    <button 
+      class="group relative w-6 h-6 lg:hidden" 
+      (click)="toggleNavMenu()"
+    >
+      <div 
+        class="absolute top-1/4 w-full h-[2px] bg-erp-gray-500 group-hover:bg-erp-gray-900 transition-all"
+        [ngClass]="{ 'rotate-45 top-1/2': isNavMenuOpen, 'rotate-0 top-1/4': !isNavMenuOpen }"
+      ></div>
+      <div 
+        class="absolute top-1/2 w-full h-[2px] bg-erp-gray-500 group-hover:bg-erp-gray-900 transition-all"
+        [ngClass]="{ 'opacity-0': isNavMenuOpen, 'opacity-100': !isNavMenuOpen }"
+      ></div>
+      <div 
+        class="absolute top-3/4 w-full h-[2px] bg-erp-gray-500 group-hover:bg-erp-gray-900 transition-all"
+        [ngClass]="{ '-rotate-45 top-1/2': isNavMenuOpen, 'rotate-0 top-3/4': !isNavMenuOpen }"
+      ></div>
+    </button>
+  
+    <div class="flex flex-row justify-start items-center gap-12">
+      <a routerLink="/">
+        <img src="assets/images/target-logo.svg" alt="logo" class="h-8" />
+      </a>
+  
+      <div class="hidden lg:flex flex-row justify-start items-center gap-1 font-medium text-erp-gray-700">
+        <a class="py-[8px] px-[12px] text-gray-700 rounded-md hover:bg-gray-50 hover:cursor-pointer">
+          Home
+        </a>
+  
+          <div class="flex gap-2 justify-start items-center cursor-default">
+            <a class="py-[8px] px-[12px] text-gray-700 flex items-center gap-1 rounded-md hover:bg-gray-50 hover:cursor-pointer">
+              Workspaces
+            <i class="ph-bold ph-caret-down text-gray-400"></i>
+          </a>
+          </div>     
+          <div class="flex gap-2 justify-start items-center cursor-default">
+            <a class="py-[8px] px-[12px] text-gray-700 flex items-center gap-2 rounded-md hover:bg-gray-50 hover:cursor-pointer">
+              <i class="ph-bold ph-plus text-gray-700"></i>
+              Create workspace           
+          </a>
+          </div>  
+      </div>
+    </div>
+  
+    <div class="hidden lg:flex flex-row justify-start items-center">
+      <div class="flex items-center">
+        <div>
+          <!-- <ng-container let user for user>
+                            {{user.avatarImagePath}}
+                            <p>{{user.name}}</p>
+                        </ng-container> -->
+         
+
+          <!--  -->
+          <div class="relative inline-block text-left">
+            <div>
+              <button
+                (click)="toggleDropDown()"
+                type="button"
+                class="flex items-center gap-[5px] py-2 text-sm font-semibold text-gray-900  rounded-xl"
+                id="menu-button"
+                aria-expanded="true"
+                aria-haspopup="true"
+              >
+              <div class="avatar bg-avatar bg-cover w-[30px] h-[30px]"></div>
+              <p class="text-[14px] font-medium text-gray-500">Restie Antiquin</p>
+              <i *ngIf="!isDropdownOpen"  class="ph-bold ph-caret-down"></i>
+              <i *ngIf="isDropdownOpen" class="ph-bold ph-caret-up"></i>
+                <!-- <svg
+                  class="-mr-1 h-5 w-5 text-gray-400"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-expanded="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                    clip-rule="evenodd"
+                  />
+                </svg> -->
+              </button>
+            </div>
+            <div
+              class="absolute hidden bg-white z-50 mt-2 w-full origin-top-right rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              [class.!flex]="isDropdownOpen"
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="menu-button"
+            >
+              <div class="py-1 w-full" role="none">
+                <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                <a
+                  (click)="viewProfile()"
+                  class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-50 w-full cursor-pointer"
+                  role="menuitem"
+                  tabindex="-1"
+                  id="menu-item-0"
+                  >View Profile</a
+                >
+                <a
+                  (click)="logout()"
+                  class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-50 w-full cursor-pointer"
+                  role="menuitem"
+                  tabindex="-1"
+                  id="menu-item-1"
+                  >Log out</a
+                >           
+              </div>
+            </div>
+          </div>
+
+          
+
+          <!--  -->
+        </div>
+      </div>   
+    </div>
+  
+    <div class="lg:hidden"></div>
+  </div>
+  
+  <div 
+    class="absolute top-full z-50 w-full px-8 bg-white flex flex-col justify-between items-stretch transition-all overflow-hidden"
+    [ngClass]="{ 
+      'h-[calc(100dvh_-_72px)] py-8': isNavMenuOpen, 
+      'h-0 py-0': !isNavMenuOpen 
+    }"
+  >
+    <div class="flex flex-col justify-start items-stretch gap-8">
+      <div class="flex flex-col justify-start items-start gap-1">
+        <img src="assets/images/avatar-sample.svg" alt="avatar" class="h-16" />
+        <h6 class="text-2xl font-medium">Restie Antiquin</h6>
+      </div>
+  
+      <div class="flex flex-col justify-start items-stretch gap-2 text-xl">
+        <a routerLink="/">Home</a>
+        <div class="flex flex-col justify-start items-stretch gap-2">
+          <div class="flex flex-row justify-between items-center gap-1">
+            <p>Workspaces</p>
+          </div>
+  
+          <div class="flex flex-col justify-start items-stretch text-lg pl-4 gap-1">
+            <a>Software development</a>
+            <a>UI/UX design</a>
+  
+            <button class="group flex flex-row justify-start items-center gap-1 text-erp-primary-700">
+              <svg 
+                width="20" 
+                height="20" 
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+                class="text-current w-5 h-5 transition-all"
+              >
+                <path d="M9.99984 4.16675V15.8334M4.1665 10.0001H15.8332" 
+                  class="stroke-current"
+                  stroke-width="1.67" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <p>Add new workspace</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <button class="self-start" (click)="logout()">Logout</button>
+  </div>
+  

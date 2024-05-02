@@ -1,0 +1,12 @@
+.cards::-webkit-scrollbar{
+/* display: none; */
+}
+
+.cards::-webkit-scrollbar-button{
+ 
+}
+
+:host {
+    @apply relative;
+    min-height: 100dvh;
+  }
